@@ -1,8 +1,51 @@
+
+body {
+  background-color: rgb(32,32,32);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.optionsForm {
+  background-color: rgba(255,255,255,0.9);
+  padding: 1em 2em;
+  border-radius: 1em;
+  color: black;
+  margin: 1.5em auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.optSection {
+  background-color: rgba(255,255,255,0.9);
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 0.5em;
+}
+
+#save {
+  background-color: rgb(32,192,64);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  font-size: 1.5em;
+  width: 250px;
+  margin: 0.5em auto;
+  cursor: pointer;
+}
+#save:hover {
+  background-color: rgb(32,127,64);
+}
+
 td {
   vertical-align: top;
 }
 
-#selSite, #txtAddSite, #selTag, #txtAddTag {
+input[type=text], select {
   min-width: 250px;
 }
 
@@ -50,7 +93,8 @@ td {
   margin: 0 15px;
 }
 
-.customDelim {
+input.customDelim {
+  min-width: 0;
   width: 2em;
   margin-left: .5em;
 }
