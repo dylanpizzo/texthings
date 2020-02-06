@@ -58,7 +58,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.method == 'shouldTeXify') {
     sendResponse({answer: should_texify(request.host),
                   delimiters: get_delimiters(),
-                  skip_tags: get_skip_tags()});
+                  skip_tags: get_skip_tags(),
+                  ignore_class: get_ignore_class()});
   } else {
     sendResponse({});
   }
@@ -101,4 +102,8 @@ function get_delimiters() {
 
 function get_skip_tags(){
   return get_option('skip_tags')
+}
+
+function get_ignore_class(){
+  return get_option('ignore_class')
 }

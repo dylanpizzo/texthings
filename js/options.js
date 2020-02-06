@@ -8,6 +8,7 @@ var default_options = {
   display_dollar: true,
   display_bracket: true,
   display_custom: false,
+  ignore_class: '',
   skip_tags: ['script','noscript','style','textarea','pre','code']
 };
 

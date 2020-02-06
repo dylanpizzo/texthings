@@ -34,6 +34,9 @@ function save_options() {
     set_option('display_custom', false);
   }
 
+  // Skip Editable Regions
+  set_option('ignore_class', $('#txtIgnoreClass').val());
+
   // tex2jax Skip Tags
   var skip_tags = [];
   $('#selTag>option').each(function() {
