@@ -35,7 +35,12 @@ function save_options() {
   }
 
   // Skip Editable Regions
-  set_option('ignore_class', $('#txtIgnoreClass').val());
+  var iclasses = [];
+  $('#selIgnoreClass>option').each(function() {
+    iclasses.push($(this).val());
+  });
+  set_option('ignore_class', iclasses.join("|"));
+  // set_option('ignore_class', $('#txtIgnoreClass').val());
 
   // tex2jax Skip Tags
   var skip_tags = [];
@@ -86,6 +91,15 @@ function restore_options() {
     $('#customDisplayClose').val(display_custom[1]);
   }
 
+  // $('#txtIgnoreClass').val(ignore_class);
+  var iclasses = get_option('ignore_class');
+  $.each(iclasses, function(index, iclass) {
+    $('#selSite').append($('<option>', {
+        value: iclass,
+        text : iclass
+    }));
+  });
+
   // tex2jax Skip Tags
   var skip_tags = get_option('skip_tags');
   $.each(skip_tags, function(index, tag) {
@@ -108,6 +122,26 @@ function restore_options() {
   if (get_option('white_list_mode')) {
     $('#chkWhiteListMode').prop('checked', true);
   }
+}
+
+function add_ignore_class() {
+  var iclass = $('#txtAddIgnoreClass').val().trim();
+  $('#txtAddIgnoreClass').val('');
+
+  if (iclass !== '') {
+    $('#selIgnoreClass').append($('<option>', {
+        value: iclass,
+        text : iclass
+    }));
+  }
+}
+
+function remove_ignore_class() {
+  $('#selIgnoreClass>option:selected').remove();
+}
+
+function clear_ignore_class() {
+  $('#selIgnoreClass>option').remove();
 }
 
 function add_site() {
@@ -169,6 +203,10 @@ function displayMessage(message) {
 }
 
 $(function() {
+  $('#btnAddIgnoreClass').click(add_ignore_class);
+  $('#btnRemoveIgnoreClass').click(remove_ignore_class);
+  $('#btnClearIgnoreClass').click(clear_ignore_class);
+
   $('#btnAddSite').click(add_site);
   $('#btnRemoveSite').click(remove_site);
   $('#btnClearSite').click(clear_sites);

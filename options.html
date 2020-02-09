@@ -30,9 +30,27 @@
 
     <div class="optSection">
       <h2>Class Filter</h2>
-      <div>
+      <!-- <div>
         <p>Ignore Class RegEx: <input type="text" id="txtIgnoreClass"></p>
-      </div>
+      </div> -->
+      <p class="optionInfo">
+        Add classes to the list below. Elements with those classes will be ignored.
+      </p>
+      <table id="ignoreClassList">
+        <tbody>
+          <tr>
+            <td><input type="text" id="txtAddIgnoreClass"></td>
+            <td><button id="btnAddIgnoreClass">Add</button></td>
+          </tr>
+          <tr>
+            <td><select size="8" id="selIgnoreClass"></select></td>
+            <td>
+              <button id="btnRemoveIgnoreClass">Remove</button><br>
+              <button id="btnClearIgnoreClass">Clear</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="optSection">
